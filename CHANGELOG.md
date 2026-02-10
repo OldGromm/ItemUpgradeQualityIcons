@@ -1,3 +1,7 @@
+# 0.4.0
+
+12.0.1 toc update
+
 # 0.3.9
 
 Potential fix to pre-ilvl squished numbers displaying as max ilvl
