@@ -141,6 +141,9 @@ local function SearchAndReplaceTooltipLine(tooltip)
 	local _, itemLink = TooltipUtil.GetDisplayedItem(tooltip)
 	if not itemLink then return end
 
+	local tooltipData = C_TooltipInfo.GetHyperlink(itemLink);
+	if not tooltipData then return end
+
 	local itemUpgradeData = C_Item.GetItemUpgradeInfo(itemLink)
 	if not itemUpgradeData then return end
 
@@ -148,14 +151,11 @@ local function SearchAndReplaceTooltipLine(tooltip)
 	if not categoryData then return end -- Invalid/non-existent category
 
 	-- Editing the ilvl line
-	for i = 1, tooltip:NumLines() do
-		local line = _G[tooltip:GetName().."TextLeft"..i]
-		local text
-		if line then
-			text = line:GetText()
-		end
+	for i = 1, #tooltipData.lines do
+		local line = tooltip:GetLeftLine(i)
+		local text = tooltipData.lines[i].leftText
 
-		if text and not issecretvalue(text) then
+		if text then
 			-- Checking if ilvl line and retrieving the ilvl value
 			local ilvl = tonumber(text:match(patternIlvl));
 			if ilvl then
