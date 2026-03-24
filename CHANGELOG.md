@@ -1,3 +1,7 @@
+# 0.4.1
+
+Added secret value check to tooltip text because i guess we're secret checking lines of tooltip text for items now because blizz is storing secret values in tooltips of items now??????
+
 # 0.4.0
 
 12.0.1 toc update

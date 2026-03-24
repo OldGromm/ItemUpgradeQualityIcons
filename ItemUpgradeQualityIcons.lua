@@ -155,7 +155,7 @@ local function SearchAndReplaceTooltipLine(tooltip)
 			text = line:GetText()
 		end
 
-		if text then
+		if text and not issecretvalue(text) then
 			-- Checking if ilvl line and retrieving the ilvl value
 			local ilvl = tonumber(text:match(patternIlvl));
 			if ilvl then
