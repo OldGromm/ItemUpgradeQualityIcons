@@ -477,7 +477,7 @@ local function OnAddonLoaded()
 
 		do
 			local variable = "iconLocation"
-			local defaultValue = 1  -- Corresponds to "Option 1" below.
+			local defaultValue = defaultsTable[variable]  -- Corresponds to "Option 1" below.
 			local name = L["iconLocation"]
 			local tooltip = L["iconLocationTT"]
 
@@ -504,7 +504,7 @@ local function OnAddonLoaded()
 			local variable = "iconScale"
 			local name = L["iconScale"]
 			local tooltip = L["iconScaleTT"]
-			local defaultValue = 1
+			local defaultValue = defaultsTable[variable]
 			local minValue = .5
 			local maxValue = 1.5
 			local step = .1
@@ -519,7 +519,7 @@ local function OnAddonLoaded()
 			local variable = "iconOffsetX"
 			local name = L["iconOffsetX"]
 			local tooltip = L["iconOffsetXTT"]
-			local defaultValue = 1
+			local defaultValue = defaultsTable[variable]
 			local minValue = -10
 			local maxValue = 10
 			local step = 1
@@ -534,7 +534,7 @@ local function OnAddonLoaded()
 			local variable = "iconOffsetY"
 			local name = L["iconOffsetY"]
 			local tooltip = L["iconOffsetYTT"]
-			local defaultValue = 1
+			local defaultValue = defaultsTable[variable]
 			local minValue = -10
 			local maxValue = 10
 			local step = 1
@@ -549,7 +549,7 @@ local function OnAddonLoaded()
 			local variable = "hideUpgradeWord"
 			local name = L["HideUpgradePrefix"]
 			local tooltip = L["HideUpgradePrefixTT"]
-			local defaultValue = false
+			local defaultValue = defaultsTable[variable]
 
 			local setting = RegisterSetting(variable, defaultValue, name);
 			CreateCheckbox(category, setting, tooltip)
