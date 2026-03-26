@@ -42,6 +42,8 @@ if LOCALE == "enUS" then
 	L["Awakened"] = "Awakened"
 	L["IconTheme"] = "%s Icon"
 	L["IconThemeTT"] = "Icon that appears on %s items and tooltips."
+	L["HideUpgradePrefix"] = "Hide \"Upgrade Level:\" Text"
+	L["HideUpgradePrefixTT"] = "Hides the \"Upgrade Level:\" text in item tooltips."
 
 return end
 
@@ -75,6 +77,8 @@ if LOCALE == "esES" or LOCALE == "esMX" then
 	L["Awakened"] = "Despierto"
 	L["IconTheme"] = "%s Icono"
 	L["IconThemeTT"] = "Icono que aparece en los objetos %s y en las descripciones emergentes."
+	L["HideUpgradePrefix"] = "Ocultar texto \"Nivel de mejora:\""
+	L["HideUpgradePrefixTT"] = "Oculta el texto \"Nivel de mejora:\" en las descripciones emergentes de objetos."
 
 return end
 
@@ -108,6 +112,8 @@ if LOCALE == "deDE" then
 	L["Awakened"] = "Erweckt"
 	L["IconTheme"] = "%s Symbol"
 	L["IconThemeTT"] = "Symbol, das auf %s-Gegenständen und in Tooltips erscheint."
+	L["HideUpgradePrefix"] = "\"Aufwertungsstufe:\"-Text ausblenden"
+	L["HideUpgradePrefixTT"] = "Blendet den Text \"Aufwertungsstufe:\" in Gegenstandstooltips aus."
 
 return end
 
@@ -141,6 +147,8 @@ if LOCALE == "frFR" then
 	L["Awakened"] = "Éveillé"
 	L["IconTheme"] = "%s Icône"
 	L["IconThemeTT"] = "Icône qui apparaît sur les objets %s et dans les info-bulles."
+	L["HideUpgradePrefix"] = "Masquer le texte « Niveau d’amélioration : »"
+	L["HideUpgradePrefixTT"] = "Masque le texte « Niveau d’amélioration : » dans les info-bulles des objets."
 
 return end
 
@@ -173,6 +181,8 @@ if LOCALE == "itIT" then
 	L["Myth"] = "Mito"
 	L["Awakened"] = "Risvegliato"
 	L["IconTheme"] = "%s Icona"
+	L["HideUpgradePrefix"] = "Nascondi testo \"Livello di potenziamento:\""
+	L["HideUpgradePrefixTT"] = "Nasconde il testo \"Livello di potenziamento:\" nei tooltip degli oggetti."
 
 return end
 
@@ -206,6 +216,8 @@ if LOCALE == "ptBR" then
 	L["Awakened"] = "Desperto"
 	L["IconTheme"] = "%s Ícone"
 	L["IconThemeTT"] = "Ícone que aparece nos itens %s e nas dicas de interface."
+	L["HideUpgradePrefix"] = "Ocultar texto \"Nível de aprimoramento:\""
+	L["HideUpgradePrefixTT"] = "Oculta o texto \"Nível de aprimoramento:\" nas dicas de itens."
 
 -- Note that the EU Portuguese WoW client also
 -- uses the Brazilian Portuguese locale code.
@@ -241,6 +253,8 @@ if LOCALE == "ruRU" then
 	L["Awakened"] = "Пробужденный герой"
 	L["IconTheme"] = "%s Герб"
 	L["IconThemeTT"] = "Значок, который отображается на предметах %s и во всплывающих подсказках."
+	L["HideUpgradePrefix"] = "Скрыть текст \"Уровень улучшения:\""
+	L["HideUpgradePrefixTT"] = "Скрывает текст \"Уровень улучшения:\" в подсказках предметов."
 
 return end
 
@@ -274,6 +288,8 @@ if LOCALE == "koKR" then
 	L["Awakened"] = "각성"
 	L["IconTheme"] = "%s 문장"
 	L["IconThemeTT"] = "%s 아이템과 툴팁에 표시되는 아이콘입니다."
+	L["HideUpgradePrefix"] = "\"업그레이드 레벨:\" 텍스트 숨기기"
+	L["HideUpgradePrefixTT"] = "아이템 툴팁에서 \"업그레이드 레벨:\" 텍스트를 숨깁니다."
 
 return end
 
@@ -307,6 +323,8 @@ if LOCALE == "zhCN" then
 	L["Awakened"] = "觉醒"
 	L["IconTheme"] = "%s 图标"
 	L["IconThemeTT"] = "显示在 %s 物品和提示中的图标。"
+	L["HideUpgradePrefix"] = "隐藏“升级等级：”文本"
+	L["HideUpgradePrefixTT"] = "在物品提示中隐藏“升级等级：”文本。"
 
 return end
 
@@ -340,5 +358,7 @@ if LOCALE == "zhTW" then
 	L["Awakened"] = "覺醒"
 	L["IconTheme"] = "%s 圖示"
 	L["IconThemeTT"] = "顯示在 %s 物品和提示中的圖示。"
+	L["HideUpgradePrefix"] = "隱藏「升級等級：」文字"
+	L["HideUpgradePrefixTT"] = "在物品提示中隱藏「升級等級：」文字。"
 
 return end

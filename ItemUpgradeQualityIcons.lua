@@ -174,7 +174,13 @@ local function SearchAndReplaceTooltipLine(tooltip)
 				end
 			elseif text:match(patternUpgradeLevel) then
 				-- Ilvl line is always above the upgrade line, so this order works
-				text = text:gsub(patternUpgradeLevel, "%1" .. GetIconForTrack(itemUpgradeData.trackStringID, 20) .. " %2%3")
+				local iconStr = GetIconForTrack(itemUpgradeData.trackStringID, 20)
+				
+				if IUQI_DB and IUQI_DB.hideUpgradeWord then
+					text = text:gsub(patternUpgradeLevel, iconStr .. " %2%3")
+				else
+					text = text:gsub(patternUpgradeLevel, "%1" .. iconStr .. " %2%3")
+				end
 
 				line:SetText(text)
 				line:Show()
@@ -403,6 +409,7 @@ local defaultsTable = {
 	iconScale = 1,
 	iconOffsetX = 1,
 	iconOffsetY = 1,
+	hideUpgradeWord = false,
 };
 
 local function RegisterThemeIcon(trackID, themeKey, themeName, trackIcon)
@@ -536,6 +543,16 @@ local function OnAddonLoaded()
 			local options = Settings.CreateSliderOptions(minValue, maxValue, step)
 			options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right);
 			Settings.CreateSlider(category, setting, options, tooltip)
+		end
+
+		do
+			local variable = "hideUpgradeWord"
+			local name = L["HideUpgradePrefix"]
+			local tooltip = L["HideUpgradePrefixTT"]
+			local defaultValue = false
+
+			local setting = RegisterSetting(variable, defaultValue, name);
+			CreateCheckbox(category, setting, tooltip)
 		end
 
 		-- THEME SETTINGS
