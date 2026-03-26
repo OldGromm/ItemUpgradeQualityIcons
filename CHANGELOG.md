@@ -1,3 +1,9 @@
+# 0.4.2
+
+A better Fix™ to the tooltip text being secret-ified and stuff (and then blizz is hotfixing tooltips to not longer be permanently secret)
+
+Added an option to disable the "Upgrade Level:" text in tooltips that comes before the icon
+
 # 0.4.1
 
 Added secret value check to tooltip text because i guess we're secret checking lines of tooltip text for items now because blizz is storing secret values in tooltips of items now??????
