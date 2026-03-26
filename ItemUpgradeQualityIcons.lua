@@ -141,6 +141,9 @@ local function SearchAndReplaceTooltipLine(tooltip)
 	local _, itemLink = TooltipUtil.GetDisplayedItem(tooltip)
 	if not itemLink then return end
 
+	local tooltipData = C_TooltipInfo.GetHyperlink(itemLink);
+	if not tooltipData then return end
+
 	local itemUpgradeData = C_Item.GetItemUpgradeInfo(itemLink)
 	if not itemUpgradeData then return end
 
@@ -148,14 +151,11 @@ local function SearchAndReplaceTooltipLine(tooltip)
 	if not categoryData then return end -- Invalid/non-existent category
 
 	-- Editing the ilvl line
-	for i = 1, tooltip:NumLines() do
-		local line = _G[tooltip:GetName().."TextLeft"..i]
-		local text
-		if line then
-			text = line:GetText()
-		end
+	for i = 1, #tooltipData.lines do
+		local line = tooltip:GetLeftLine(i)
+		local text = tooltipData.lines[i].leftText
 
-		if text and not issecretvalue(text) then
+		if text then
 			-- Checking if ilvl line and retrieving the ilvl value
 			local ilvl = tonumber(text:match(patternIlvl));
 			if ilvl then
@@ -174,7 +174,13 @@ local function SearchAndReplaceTooltipLine(tooltip)
 				end
 			elseif text:match(patternUpgradeLevel) then
 				-- Ilvl line is always above the upgrade line, so this order works
-				text = text:gsub(patternUpgradeLevel, "%1" .. GetIconForTrack(itemUpgradeData.trackStringID, 20) .. " %2%3")
+				local iconStr = GetIconForTrack(itemUpgradeData.trackStringID, 20)
+				
+				if IUQI_DB and IUQI_DB.hideUpgradeWord then
+					text = text:gsub(patternUpgradeLevel, iconStr .. " %2%3")
+				else
+					text = text:gsub(patternUpgradeLevel, "%1" .. iconStr .. " %2%3")
+				end
 
 				line:SetText(text)
 				line:Show()
@@ -403,6 +409,7 @@ local defaultsTable = {
 	iconScale = 1,
 	iconOffsetX = 1,
 	iconOffsetY = 1,
+	hideUpgradeWord = false,
 };
 
 local function RegisterThemeIcon(trackID, themeKey, themeName, trackIcon)
@@ -470,7 +477,7 @@ local function OnAddonLoaded()
 
 		do
 			local variable = "iconLocation"
-			local defaultValue = 1  -- Corresponds to "Option 1" below.
+			local defaultValue = defaultsTable[variable]  -- Corresponds to "Option 1" below.
 			local name = L["iconLocation"]
 			local tooltip = L["iconLocationTT"]
 
@@ -497,7 +504,7 @@ local function OnAddonLoaded()
 			local variable = "iconScale"
 			local name = L["iconScale"]
 			local tooltip = L["iconScaleTT"]
-			local defaultValue = 1
+			local defaultValue = defaultsTable[variable]
 			local minValue = .5
 			local maxValue = 1.5
 			local step = .1
@@ -512,7 +519,7 @@ local function OnAddonLoaded()
 			local variable = "iconOffsetX"
 			local name = L["iconOffsetX"]
 			local tooltip = L["iconOffsetXTT"]
-			local defaultValue = 1
+			local defaultValue = defaultsTable[variable]
 			local minValue = -10
 			local maxValue = 10
 			local step = 1
@@ -527,7 +534,7 @@ local function OnAddonLoaded()
 			local variable = "iconOffsetY"
 			local name = L["iconOffsetY"]
 			local tooltip = L["iconOffsetYTT"]
-			local defaultValue = 1
+			local defaultValue = defaultsTable[variable]
 			local minValue = -10
 			local maxValue = 10
 			local step = 1
@@ -536,6 +543,16 @@ local function OnAddonLoaded()
 			local options = Settings.CreateSliderOptions(minValue, maxValue, step)
 			options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right);
 			Settings.CreateSlider(category, setting, options, tooltip)
+		end
+
+		do
+			local variable = "hideUpgradeWord"
+			local name = L["HideUpgradePrefix"]
+			local tooltip = L["HideUpgradePrefixTT"]
+			local defaultValue = defaultsTable[variable]
+
+			local setting = RegisterSetting(variable, defaultValue, name);
+			CreateCheckbox(category, setting, tooltip)
 		end
 
 		-- THEME SETTINGS
