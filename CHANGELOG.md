@@ -1,3 +1,7 @@
+# 0.4.3
+
+Enough time has passed of the broken API for displaying max ilvl of items that a hardcoded value for each upgrade track has been re-implemented. Blizzard doesn't appear to be fixing this issue any time soon.
+
 # 0.4.2
 
 A better Fix™ to the tooltip text being secret-ified and stuff (and then blizz is hotfixing tooltips to not longer be permanently secret)

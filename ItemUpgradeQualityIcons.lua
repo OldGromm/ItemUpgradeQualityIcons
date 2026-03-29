@@ -62,13 +62,13 @@ local SeasonData = {
 
 -- Item category data
 local categoryDataTab = {
-	[categoryEnum.Explorer] = {englishName = "Explorer", minLevel = 207, color = ITEM_POOR_COLOR},
-	[categoryEnum.Adventurer] = {englishName = "Adventurer", minLevel = 220, color = WHITE_FONT_COLOR},
-	[categoryEnum.Veteran] = {englishName = "Veteran", minLevel = 233, color = UNCOMMON_GREEN_COLOR},
-	[categoryEnum.Champion] = {englishName = "Champion", minLevel = 246, color = RARE_BLUE_COLOR},
-	[categoryEnum.Hero] = {englishName = "Hero", minLevel = 259, color = ITEM_EPIC_COLOR},
-	[categoryEnum.Myth] = {englishName = "Myth", minLevel = 272, color = ITEM_LEGENDARY_COLOR},
-	[categoryEnum.Awakened] = {englishName = "Awakened", minLevel = 493, color = ITEM_LEGENDARY_COLOR}, -- update later maybe, for now this is OLD
+	[categoryEnum.Explorer] = {		englishName = "Explorer",		minLevel = 207, maxLevel = 224,	color = ITEM_POOR_COLOR},
+	[categoryEnum.Adventurer] = {	englishName = "Adventurer",		minLevel = 220, maxLevel = 237,	color = WHITE_FONT_COLOR},
+	[categoryEnum.Veteran] = {		englishName = "Veteran",		minLevel = 233, maxLevel = 250,	color = UNCOMMON_GREEN_COLOR},
+	[categoryEnum.Champion] = {		englishName = "Champion",		minLevel = 246, maxLevel = 263,	color = RARE_BLUE_COLOR},
+	[categoryEnum.Hero] = {			englishName = "Hero",			minLevel = 259, maxLevel = 276,	color = ITEM_EPIC_COLOR},
+	[categoryEnum.Myth] = {			englishName = "Myth",			minLevel = 272, maxLevel = 289,	color = ITEM_LEGENDARY_COLOR},
+	[categoryEnum.Awakened] = {		englishName = "Awakened",		minLevel = 493,					color = ITEM_LEGENDARY_COLOR}, -- update later maybe, for now this is OLD
 };
 
 local function UpdateSeasonData()
@@ -163,9 +163,10 @@ local function SearchAndReplaceTooltipLine(tooltip)
 				local itemMinLevel = categoryData.minLevel
 				if ilvl >= itemMinLevel then
 					-- Not showing ilvl range on a max upgraded item
-					local itemMaxLevel = GetPostSquishItemLevel(itemUpgradeData.maxItemLevel)
+					-- itemUpgradeData.maxItemLevel -- itemMaxLevel has been 0 for a very long time now and is no longer a reliable source
+					local itemMaxLevel = categoryData.maxLevel
 
-					if ilvl < itemMaxLevel and itemMaxLevel > itemMinLevel then -- sometimes itemMaxLevel is 0 (??????????)
+					if itemMaxLevel and ilvl < itemMaxLevel and itemMaxLevel > itemMinLevel then
 						text = text .. "/" .. itemMaxLevel
 
 						line:SetText(text)
