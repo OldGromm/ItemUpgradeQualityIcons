@@ -1,3 +1,7 @@
+# 0.4.4
+
+12.0.5 toc update
+
 # 0.4.3
 
 Enough time has passed of the broken API for displaying max ilvl of items that a hardcoded value for each upgrade track has been re-implemented. Blizzard doesn't appear to be fixing this issue any time soon.
